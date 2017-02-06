@@ -1,4 +1,4 @@
-# windows_kernel_address_leaks
+# Windows Kernel Address Leaks
 
 This repository aims to provide functioning code that demonstrated usage of various different ways to gain access to Kernel Mode pointers in Windows from User Mode.
 
@@ -15,7 +15,7 @@ This repository aims to provide functioning code that demonstrated usage of vari
 
 
 ##Attributions
-I have reference where I read about a technique and where specific structs etc have come from in the code, however these may not be the true original sources of the information :)
-A lot of the function prototypes and struct definitions are taken from [ReactOS](https://www.reactos.org/)
-Tick Icon By FatCow (http://www.fatcow.com/free-icons) [CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons
-Cross Icon By Cäsium137 [Public domain], via Wikimedia Commons
+I have referenced where I read about a technique and where specific structs etc have come from in the code, however these may not be the true original sources of the information :)   
+A lot of the function prototypes and struct definitions are taken from [ReactOS](https://www.reactos.org/).   
+Tick Icon By FatCow (http://www.fatcow.com/free-icons) [[CC BY 3.0](http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons   
+Cross Icon By Cäsium137 [Public domain], via Wikimedia Commons   
