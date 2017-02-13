@@ -59,8 +59,12 @@ int main()
 		HANDLE handle = pHandleInfo->Handles[i].HandleValue;
 		HANDLE pid = pHandleInfo->Handles[i].UniqueProcessId;
 		printf("PID: %d\t", pid);
+#ifdef _WIN64
+		printf("Object 0x%llx\t", object);
+#else
 		printf("Object 0x%X\t", object);
-		printf("Handle 0x%X\r\n", handle);
+#endif
+		printf("Handle 0x%x\r\n", handle);
 	}
 	return 0;
 }

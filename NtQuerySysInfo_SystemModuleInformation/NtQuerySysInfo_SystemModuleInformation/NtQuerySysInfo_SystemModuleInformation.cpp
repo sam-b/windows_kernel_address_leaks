@@ -9,6 +9,9 @@
 typedef struct SYSTEM_MODULE {
 	ULONG                Reserved1;
 	ULONG                Reserved2;
+#ifdef _WIN64
+	ULONG				Reserved3;
+#endif
 	PVOID                ImageBaseAddress;
 	ULONG                ImageSize;
 	ULONG                Flags;
@@ -16,7 +19,7 @@ typedef struct SYSTEM_MODULE {
 	WORD                 Rank;
 	WORD                 w018;
 	WORD                 NameOffset;
-	BYTE                 Name[MAXIMUM_FILENAME_LENGTH];
+	CHAR                 Name[MAXIMUM_FILENAME_LENGTH];
 }SYSTEM_MODULE, *PSYSTEM_MODULE;
 
 typedef struct SYSTEM_MODULE_INFORMATION {
@@ -56,11 +59,15 @@ int main()
 		printf("Failed to retrieve system module information.\r\n");
 		return 1;
 	}
-	for (int i = 0; i < pModuleInfo->ModulesCount; i++) {
+	for (unsigned int i = 0; i < pModuleInfo->ModulesCount; i++) {
 		PVOID kernelImageBase = pModuleInfo->Modules[i].ImageBaseAddress;
 		PCHAR kernelImage = (PCHAR)pModuleInfo->Modules[i].Name;
-		printf("Module name %s\t", kernelImage);
-		printf("Base Address 0x%X\r\n", kernelImageBase);
+		printf("Mod name %s ", kernelImage);
+#ifdef _WIN64
+		printf("Base Addr 0x%llx\r\n", kernelImageBase);
+#else
+		printf("Base Addr 0x%X\r\n", kernelImageBase);
+#endif
 	}
     return 0;
 }

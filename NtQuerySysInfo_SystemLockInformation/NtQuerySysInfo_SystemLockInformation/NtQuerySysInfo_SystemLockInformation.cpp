@@ -12,6 +12,9 @@ typedef struct _SYSTEM_LOCK {
 	ULONG	ActiveCount;
 	ULONG	ContentionCount;
 	ULONG	Reserved2[2];
+#ifdef _WIN64
+	ULONG	Reserved3;
+#endif
 	ULONG	NumberOfSharedWaiters;
 	ULONG	NumberOfExclusiveWaiters;
 } SYSTEM_LOCK, *PSYSTEM_LOCK;
@@ -51,10 +54,14 @@ int main()
 		status = query(SystemLockInformation, pLockInfo, len, &len);
 	} while (status == (NTSTATUS)0xc0000004);
 
-	for (int i = 0; i < pLockInfo->LocksCount; i++) {
+	for (unsigned int i = 0; i < pLockInfo->LocksCount; i++) {
 		PVOID lockAddress = pLockInfo->Locks[i].Address;
 		USHORT lockType = (USHORT)pLockInfo->Locks[i].Type;
+#ifdef _WIN64
+		printf("Lock Address 0x%llx\t", lockAddress);
+#else
 		printf("Lock Address 0x%X\t", lockAddress);
+#endif
 		printf("Lock Type 0x%X\r\n", lockType);
 	}
 	return 0;

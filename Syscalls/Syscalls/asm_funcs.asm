@@ -1,0 +1,11 @@
+_DATA SEGMENT
+_DATA ENDS
+_TEXT SEGMENT
+
+PUBLIC get_rax
+
+get_rax PROC
+ret
+get_rax ENDP
+_TEXT ENDS
+END

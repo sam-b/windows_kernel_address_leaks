@@ -86,8 +86,7 @@ typedef enum _KWAIT_REASON
 	MaximumWaitReason = 37
 } KWAIT_REASON;
 
-
-typedef struct _SYSTEM_THREAD_INFORMATION{
+typedef struct _SYSTEM_THREAD_INFORMATION {
 	LARGE_INTEGER KernelTime;
 	LARGE_INTEGER UserTime;
 	LARGE_INTEGER CreateTime;
@@ -96,10 +95,13 @@ typedef struct _SYSTEM_THREAD_INFORMATION{
 	CLIENT_ID ClientId;
 	KPRIORITY Priority;
 	LONG BasePriority;
-	ULONG ContextSwitches;
+	ULONG ContextSwitchCount;
 	ULONG ThreadState;
 	KWAIT_REASON WaitReason;
-} SYSTEM_THREAD_INFORMATION, *PSYSTEM_THREAD_INFORMATION;
+#ifdef _WIN64
+	ULONG Reserved[4];
+#endif
+}SYSTEM_THREAD_INFORMATION, *PSYSTEM_THREAD_INFORMATION;
 
 typedef struct _SYSTEM_EXTENDED_THREAD_INFORMATION
 {
@@ -107,13 +109,11 @@ typedef struct _SYSTEM_EXTENDED_THREAD_INFORMATION
 	PVOID StackBase;
 	PVOID StackLimit;
 	PVOID Win32StartAddress;
-	PVOID TebAddress;
+	PVOID TebAddress; /* This is only filled in on Vista and above */
 	ULONG Reserved1;
 	ULONG Reserved2;
 	ULONG Reserved3;
-} SYSTEM_EXTENDED_THREAD_INFORMATION, *
-PSYSTEM_EXTENDED_THREAD_INFORMATION;
-
+} SYSTEM_EXTENDED_THREAD_INFORMATION, *PSYSTEM_EXTENDED_THREAD_INFORMATION;
 typedef struct _SYSTEM_EXTENDED_PROCESS_INFORMATION
 {
 	ULONG NextEntryOffset;
@@ -126,7 +126,7 @@ typedef struct _SYSTEM_EXTENDED_PROCESS_INFORMATION
 	LARGE_INTEGER KernelTime;
 	UNICODE_STRING ImageName;
 	KPRIORITY BasePriority;
-	ULONG UniqueProcessId;
+	ULONG ProcessId;
 	ULONG InheritedFromUniqueProcessId;
 	ULONG HandleCount;
 	ULONG SessionId;
@@ -137,9 +137,8 @@ typedef struct _SYSTEM_EXTENDED_PROCESS_INFORMATION
 	SYSTEM_EXTENDED_THREAD_INFORMATION Threads[1];
 } SYSTEM_EXTENDED_PROCESS_INFORMATION, *PSYSTEM_EXTENDED_PROCESS_INFORMATION;
 
-
 typedef enum _SYSTEM_INFORMATION_CLASS {
-	SystemSessionProcessInformation = 57
+	SystemExtendedProcessInformation = 57
 } SYSTEM_INFORMATION_CLASS;
 
 typedef NTSTATUS(WINAPI *PNtQuerySystemInformation)(
@@ -157,20 +156,29 @@ int main()
 		printf("GetProcAddress() failed.\n");
 		return 1;
 	}
-	ULONG len = 20;
+	ULONG len = 2000;
 	NTSTATUS status = NULL;
 	PSYSTEM_EXTENDED_PROCESS_INFORMATION pProcessInfo = NULL;
 	do {
-		len *= 2;	
+		len *= 2;
 		pProcessInfo = (PSYSTEM_EXTENDED_PROCESS_INFORMATION)GlobalAlloc(GMEM_ZEROINIT, len);
-		status = query(SystemSessionProcessInformation, pProcessInfo, len, &len);
+		status = query(SystemExtendedProcessInformation, pProcessInfo, len, &len);
 	} while (status == (NTSTATUS)0xc0000004);
 
-	for (unsigned int i = 0; i < pProcessInfo->NumberOfThreads; i++) {
-		PVOID stackBase = pProcessInfo->Threads[i].StackBase;
-		PVOID stackLimit = pProcessInfo->Threads[i].StackLimit;
-		printf("Stack base 0x%X\t", stackBase);
-		printf("Stack limit 0x%X\r\n", stackLimit);
+
+	while (pProcessInfo->NextEntryOffset != NULL) {
+		for (unsigned int i = 0; i < pProcessInfo->NumberOfThreads; i++) {
+			PVOID stackBase = pProcessInfo->Threads[i].StackBase;
+			PVOID stackLimit = pProcessInfo->Threads[i].StackLimit;
+#ifdef _WIN64
+			printf("Stack base 0x%llx\t", stackBase);
+			printf("Stack limit 0x%llx\r\n", stackLimit);
+#else
+			printf("Stack base 0x%X\t", stackBase);
+			printf("Stack limit 0x%X\r\n", stackLimit);
+#endif
+		}
+		pProcessInfo = (PSYSTEM_EXTENDED_PROCESS_INFORMATION)((ULONG_PTR)pProcessInfo + pProcessInfo->NextEntryOffset);
 	}
 	return 0;
 }
