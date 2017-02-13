@@ -164,7 +164,10 @@ int main()
 		pProcessInfo = (PSYSTEM_EXTENDED_PROCESS_INFORMATION)GlobalAlloc(GMEM_ZEROINIT, len);
 		status = query(SystemExtendedProcessInformation, pProcessInfo, len, &len);
 	} while (status == (NTSTATUS)0xc0000004);
-
+	if (status != (NTSTATUS)0x0) {
+		printf("NtQuerySystemInformation failed with error code 0x%X\n", status);
+		return 1;
+	}
 
 	while (pProcessInfo->NextEntryOffset != NULL) {
 		for (unsigned int i = 0; i < pProcessInfo->NumberOfThreads; i++) {

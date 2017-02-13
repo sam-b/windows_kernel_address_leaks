@@ -54,6 +54,10 @@ int main()
 		status = query(SystemExtendedHandleInformation, pHandleInfo, len, &len);
 
 	} while (status == (NTSTATUS) 0xc0000004);
+	if (status != (NTSTATUS)0x0) {
+		printf("NtQuerySystemInformation failed with error code 0x%X\n", status);
+		return 1;
+	}
 	for (int i = 0; i < pHandleInfo->HandleCount; i++) {
 		PVOID object = pHandleInfo->Handles[i].Object;
 		HANDLE handle = pHandleInfo->Handles[i].HandleValue;

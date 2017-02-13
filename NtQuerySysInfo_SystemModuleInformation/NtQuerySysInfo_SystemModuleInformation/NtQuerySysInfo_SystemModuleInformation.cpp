@@ -54,9 +54,10 @@ int main()
 		printf("Could not allocate memory for module info.\n");
 		return 1;
 	}
-	query(SystemModuleInformation, pModuleInfo, len, &len);
-	if (len == 0) {
-		printf("Failed to retrieve system module information.\r\n");
+	NTSTATUS status = query(SystemModuleInformation, pModuleInfo, len, &len);
+
+	if (status != (NTSTATUS)0x0) {
+		printf("NtQuerySystemInformation failed with error code 0x%X\n", status);
 		return 1;
 	}
 	for (unsigned int i = 0; i < pModuleInfo->ModulesCount; i++) {

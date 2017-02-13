@@ -53,7 +53,10 @@ int main()
 		pLockInfo = (PSYSTEM_LOCK_INFORMATION)GlobalAlloc(GMEM_ZEROINIT, len);
 		status = query(SystemLockInformation, pLockInfo, len, &len);
 	} while (status == (NTSTATUS)0xc0000004);
-
+	if (status != (NTSTATUS)0x0) {
+		printf("NtQuerySystemInformation failed with error code 0x%X\n", status);
+		return 1;
+	}
 	for (unsigned int i = 0; i < pLockInfo->LocksCount; i++) {
 		PVOID lockAddress = pLockInfo->Locks[i].Address;
 		USHORT lockType = (USHORT)pLockInfo->Locks[i].Type;
