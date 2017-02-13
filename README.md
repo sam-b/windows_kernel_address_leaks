@@ -2,8 +2,7 @@
 
 This repository aims to provide functioning code that demonstrated usage of various different ways to gain access to Kernel Mode pointers in Windows from User Mode.
 
-| Technique											| Windows 7 | Windows 8 | Windows 8.1  |Windows 8.1  	| Windows 10 |
-|													|			|			| Low Integrity|Medium Integrity|			 |
+| Technique											| Windows 7 | Windows 8 | Windows 8.1 Low Integrity  |Windows 8.1 Medium Integrity 	| Windows 10 |
 |---------------------------------------------------|-----------|-----------|--------------|----------------|------------|
 |[NtQuerySystemInformation (SystemHandleInformation)](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtQuerySysInfo_SystemHandleInformation/NtQuerySysInfo_SystemHandleInformation/NtQuerySysInfo_SystemHandleInformation.cpp) |	![](tick.png)		|![](tick.png)			|![](cross.png)			  |	![](tick.png)		  |			|
 |[NtQuerySystemInformation (SystemLockInformation)](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtQuerySysInfo_SystemLockInformation/NtQuerySysInfo_SystemLockInformation/NtQuerySysInfo_SystemLockInformation.cpp)	|![](tick.png)			|![](tick.png)			|![](cross.png)			  |	![](tick.png)		  |			|
