@@ -9,8 +9,8 @@ This repository aims to provide functioning code that demonstrated usage of vari
 |[NtQuerySystemInformation (SystemModuleInformation)](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtQuerySysInfo_SystemModuleInformation/NtQuerySysInfo_SystemModuleInformation/NtQuerySysInfo_SystemModuleInformation.cpp)	|![](tick.png)			|![](tick.png)			|![](cross.png)			  |	![](tick.png)|![](cross.png)			  |	![](tick.png)
 |[NtQuerySystemInformation (SystemProcessInformation)](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtQuerySysInfo_SystemProcessInformation/NtQuerySysInfo_SystemProcessInformation/NtQuerySysInfo_SystemProcessInformation.cpp)|![](tick.png)			|![](tick.png)			|![](cross.png)			  |	![](tick.png)|![](cross.png)			  |	![](tick.png)
 |[System Call Return Values](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/Syscalls/Syscalls/Syscalls.cpp)							|![](tick.png)			|![](cross.png)			|![](cross.png)			  |![](cross.png)			  |![](cross.png)			|![](cross.png)|
-|[Win32k Shared Info Handle Table](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/SharedInfoHandleTable/SharedInfoHandleTable/SharedInfoHandleTable.cpp)					|![](tick.png)			|![](tick.png)		|			  |			  |			|
-|[Descriptor Tables](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/DescriptorTables/DescriptorTables/DescriptorTables.cpp)									|![](tick.png)			|![](tick.png)			|![](tick.png)			  |![](tick.png)|![](tick.png)|![](tick.png)|
+|[Win32k Shared Info Handle Table](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/SharedInfoHandleTable/SharedInfoHandleTable/SharedInfoHandleTable.cpp)	|![](tick.png)			|![](tick.png)		|![](tick.png)			|![](tick.png)|![](tick.png)|![](tick.png)|
+|[Descriptor Tables](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/DescriptorTables/DescriptorTables/DescriptorTables.cpp)								|![](tick.png)			|![](tick.png)		|![](tick.png)			|![](tick.png)|![](tick.png)|![](tick.png)|
 
 
 ##Caveats
