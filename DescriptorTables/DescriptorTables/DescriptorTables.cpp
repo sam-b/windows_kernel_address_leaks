@@ -6,7 +6,6 @@
 #include <Windows.h>
 #include <intrin.h>
 
-extern "C" void get_idtr(unsigned char *out);
 extern "C" BYTE get_tss_selector(void);
 
 int main()
@@ -14,7 +13,7 @@ int main()
 	
 #ifdef _WIN64
 	unsigned char idtr[10] = { 0 };
-	get_idtr(idtr);
+	__sidt(idtr); 
 	unsigned long long idtrBase = (unsigned long long)idtr[0] << 56 |
 		(unsigned long long)idtr[1] << 48 |
 		(unsigned long long)idtr[2] << 40 |
