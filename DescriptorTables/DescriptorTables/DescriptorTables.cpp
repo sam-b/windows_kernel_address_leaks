@@ -6,14 +6,12 @@
 #include <Windows.h>
 #include <intrin.h>
 
-extern "C" BYTE get_tss_selector(void);
-
 int main()
 {
-	
+
 #ifdef _WIN64
 	unsigned char idtr[10] = { 0 };
-	__sidt(idtr); 
+	__sidt(idtr);
 	unsigned long long idtrBase = (unsigned long long)idtr[0] << 56 |
 		(unsigned long long)idtr[1] << 48 |
 		(unsigned long long)idtr[2] << 40 |
@@ -38,9 +36,9 @@ int main()
 		(unsigned int)idtr[5];
 	printf("Interrupt Descriptor Table Register base: 0x%X, limit: 0x%X\r\n", idtrBase, idtrLimit);
 #endif
-	
-	
-	
+
+
+
 #ifdef _WIN64
 	unsigned char gdtr[10] = { 0 };
 	_sgdt(gdtr);
@@ -68,21 +66,14 @@ int main()
 		(unsigned int)gdtr[5];
 	printf("Global Descriptor Table Register base: 0x%X, limit: 0x%X\r\n", gdtrBase, gdtrLimit);
 #endif
-	
-	WORD tr;
-#ifdef _WIN64
-	tr = get_tss_selector();
-#else
-	__asm str tr
-#endif
 
-#ifdef _WIN64
-	WOW64_LDT_ENTRY tss;
-	Wow64GetThreadSelectorEntry(GetCurrentThread(), tr, &tss);
-#else
+
+#ifndef _WIN64
+	WORD tr;
+	__asm str tr
 	LDT_ENTRY tss;
 	GetThreadSelectorEntry(GetCurrentThread(), tr, &tss);
-#endif
+
 	unsigned int  tssBase = (tss.HighWord.Bits.BaseHi << 24) +
 		(tss.HighWord.Bits.BaseMid << 16) +
 		tss.BaseLow;
@@ -90,5 +81,6 @@ int main()
 	printf("TSS base: 0x%X, limit: 0x%X\r\n", tssBase, tssLimit);
 
 	return 0;
+#endif
 }
 
