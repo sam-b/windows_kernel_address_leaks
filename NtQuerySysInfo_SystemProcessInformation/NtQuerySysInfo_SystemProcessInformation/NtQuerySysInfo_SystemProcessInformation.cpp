@@ -16,7 +16,6 @@ typedef struct _UNICODE_STRING {
 
 //from http://boinc.berkeley.edu/android-boinc/boinc/lib/diagnostics_win.h
 typedef struct _VM_COUNTERS {
-#ifdef _WIN64
 	// the following was inferred by painful reverse engineering
 	SIZE_T		   PeakVirtualSize;	// not actually
 	SIZE_T         PageFaultCount;
@@ -29,19 +28,6 @@ typedef struct _VM_COUNTERS {
 	SIZE_T         PagefileUsage;
 	SIZE_T         PeakPagefileUsage;
 	SIZE_T         VirtualSize;		// not actually
-#else
-	SIZE_T         PeakVirtualSize;
-	SIZE_T         VirtualSize;
-	ULONG          PageFaultCount;
-	SIZE_T         PeakWorkingSetSize;
-	SIZE_T         WorkingSetSize;
-	SIZE_T         QuotaPeakPagedPoolUsage;
-	SIZE_T         QuotaPagedPoolUsage;
-	SIZE_T         QuotaPeakNonPagedPoolUsage;
-	SIZE_T         QuotaNonPagedPoolUsage;
-	SIZE_T         PagefileUsage;
-	SIZE_T         PeakPagefileUsage;
-#endif
 } VM_COUNTERS;
 
 typedef enum _KWAIT_REASON
