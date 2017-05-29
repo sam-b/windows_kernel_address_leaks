@@ -3,7 +3,7 @@
 This repository aims to provide functioning code that demonstrated usage of various different ways to gain access to Kernel Mode pointers in Windows from User Mode.
 
 | Technique											| Windows 7 | Windows 8 | Windows 8.1 | Windows 10 - 1511 | Windows 10 - 1607 | Windows 10 - 1703 | 
-|---------------------------------------------------|-----------|-----------|--------------|----------------|----------------|----------------|----------------|
+|---------------------------------------------------|-----------|-----------|--------------|----------------|----------------|----------------|
 |[NtQuerySystemInformation (SystemHandleInformation)](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtQuerySysInfo_SystemHandleInformation/NtQuerySysInfo_SystemHandleInformation/NtQuerySysInfo_SystemHandleInformation.cpp) |	![](icons/tick.png)		|![](icons/tick.png)			|![](icons/amber.png)|![](icons/amber.png)|![](icons/amber.png)|![](icons/amber.png)|
 |[NtQuerySystemInformation (SystemLockInformation)](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtQuerySysInfo_SystemLockInformation/NtQuerySysInfo_SystemLockInformation/NtQuerySysInfo_SystemLockInformation.cpp)	|![](icons/tick.png)			|![](icons/tick.png)			|![](icons/amber.png)|![](icons/amber.png)|![](icons/amber.png)|![](icons/amber.png)|
 |[NtQuerySystemInformation (SystemModuleInformation)](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtQuerySysInfo_SystemModuleInformation/NtQuerySysInfo_SystemModuleInformation/NtQuerySysInfo_SystemModuleInformation.cpp)	|![](icons/tick.png)			|![](icons/tick.png)			|![](icons/amber.png)|![](icons/amber.png)|![](icons/amber.png)|![](icons/amber.png)|
