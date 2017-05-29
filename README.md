@@ -1,6 +1,6 @@
 # Windows Kernel Address Leaks
 
-This repository aims to provide functioning code that demonstrated usage of various different ways to gain access to Kernel Mode pointers in Windows from User Mode.
+This repository aims to provide functioning code that demonstrated usage of various different ways to gain access to Kernel Mode pointers in Windows from User Mode. A green ticket indicates a leak which works from a low integrity process and an organge tick a leak which requires a medium integrity process.
 
 | Technique											| Windows 7 | Windows 8 | Windows 8.1 | Windows 10 - 1511 | Windows 10 - 1607 | Windows 10 - 1703 | 
 |---------------------------------------------------|-----------|-----------|--------------|----------------|----------------|----------------|
