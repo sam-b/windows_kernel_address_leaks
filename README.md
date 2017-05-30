@@ -13,14 +13,15 @@ This repository aims to provide functioning code that demonstrated usage of vari
 |[Win32k Shared Info User Handle Table](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/SharedInfoHandleTable/SharedInfoHandleTable/SharedInfoHandleTable.cpp)	|![](icons/tick.png)			|![](icons/tick.png)		|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/cross.png)|
 |[Descriptor Tables](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/DescriptorTables/DescriptorTables/DescriptorTables.cpp)								|![](icons/tick.png)			|![](icons/tick.png)		|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|
 |[HMValidateHandle](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/HMValidateHandle/HMValidateHandle/HMValidateHandle.cpp) |![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|
-
+|[GdiSharedHandleTable](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/GdiSharedHandleTable/GdiSharedHandleTable/GdiSharedHandleTable.cpp)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/cross.png)|![](icons/cross.png)|
 ## Further Details
 Some more details on techniques which no longer work and what was changed:
 ### NtQuerySystemInformation/System Call Return Values:
 [https://samdb.xyz/revisiting-windows-security-hardening-through-kernel-address-protection/](https://samdb.xyz/revisiting-windows-security-hardening-through-kernel-address-protection/)
 ### Win32k Shared Info User Handle Table
 Pending
-
+### GdiSharedHandleTable
+Pending
 ## Caveats
 The Descriptor Table pointer leak will work on a standard Windows 10 (or possibly 8.1: https://twitter.com/JosephBialek/status/768954635570679808) machine but a Windows 10 Enterprise machine with HyperV enabled will trap on the sidt/sgdt instructions thanks to Intel Non-Privileged Instruction Execution Prevention (NPIEP) and return false values (see: [https://www.blackhat.com/docs/us-16/materials/us-16-Weston-Windows-10-Mitigation-Improvements.pdf](https://www.blackhat.com/docs/us-16/materials/us-16-Weston-Windows-10-Mitigation-Improvements.pdf), Windows Kernel 64-bit ASLR Improvements).   
 ## Attributions
