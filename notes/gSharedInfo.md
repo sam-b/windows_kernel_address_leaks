@@ -4,6 +4,7 @@
 While going through and validating the status of the kernel leaks on versions 1607/1703 of Windows 10, I found that the gSharedInfo table no longer gave us kernel pointers and the table structure had clearly been changed.
 
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/gSharedInfo_win_1703.png)
+
 Which is very different to what used to be returned on 1607:   
 
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/gSharedInfo_win_1607.png)
