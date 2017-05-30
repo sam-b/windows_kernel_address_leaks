@@ -21,7 +21,7 @@ Some more details on techniques which no longer work and what was changed:
 ### NtQuerySystemInformation/System Call Return Values:
 [https://samdb.xyz/revisiting-windows-security-hardening-through-kernel-address-protection/](https://samdb.xyz/revisiting-windows-security-hardening-through-kernel-address-protection/)
 ### Win32k Shared Info User Handle Table
-[notes/gSharedInfo.md](notes/gSharedInfo.md) - A brief look at the changes made in the Creators Update/1703.
+[notes/gSharedInfo.md](notes/gSharedInfo.md) - A brief look at the changes made in the Creators Update/1703. Not very concrete or detailed, I might revisit it and create something more detailed or maybe someone else will.
 ### GdiSharedHandleTable / Desktop Heap
 Pending
 ## Caveats
