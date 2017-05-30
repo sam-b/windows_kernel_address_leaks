@@ -5,6 +5,7 @@ While going through and validating the status of the kernel leaks on versions 16
 
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/gSharedInfo_win_1703.png)
 Which is very different to what used to be returned on 1607:   
+
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/gSharedInfo_win_1607.png)
 
 Turns out this shouldn't have been much of a surprise since people had been discussing it during the [preview build releases](https://twitter.com/Blomster81/status/847571032521273345).
