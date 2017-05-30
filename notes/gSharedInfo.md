@@ -9,7 +9,7 @@ Which is very different to what used to be returned on 1607:
 
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/gSharedInfo_win_1607.png)
 
-Turns out this shouldn't have been much of a surprise since people had been discussing it during the [preview build releases](https://twitter.com/Blomster81/status/847571032521273345).
+Turns out this shouldn't have been much of a surprise, as people had been discussing it during the [preview build releases](https://twitter.com/Blomster81/status/847571032521273345).
 So I set out to atleast get a basic idea of what the changes entailed.
 
 ## Initial Structure 'Reversing'
@@ -26,11 +26,11 @@ typedef struct _HANDLEENTRY {
 	WORD	unknown1; 
 	WORD	unknown2;
 	WORD	unknown3;
-	INT		padding;
+	INT     padding;
 }HANDLEENTRY, *PHANDLEENTRY;
 </pre>
 
-I also modfiied the printf statement used to log values as shown below.
+I also modfiied the printf statement used to log values, as shown below.
 
 <pre>
 printf("Head: 0x%llp, Owner: 0x%llp, flags: 0x%X, uniq: 0x%X Type: 0x%X, unknown: 0x%x, unknown1: 0x%X, unknown2: 0x%X, unknown3: 0x%X\r\n", entry.phead, entry.pOwner, entry.bFlags, entry.wUniq ,entry.bType, entry.unknown, entry.unknown1, entry.unknown2, entry.unknown3);
@@ -40,7 +40,7 @@ Running the updated code gives much saner looking output:
 
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/gSharedInfo_win_1703_struct_size_example.png)
 
-At this point the phead and pOwner very much look like handles, so I hooked up a kernel debugger to validate this. Additionally a lot of the new fields have recurring values (for example unknown's value is constant for each object type (bType)) so I figured I might be able to get some insight into those at the same time.
+At this point the phead and pOwner fields very much look like handles. Additionally a lot of the new fields have recurring values (for example unknown's value is constant for each object type (bType)) so I figured I might be able to get some insight into those at the same time.
 
 ## pHead/pOwner Verification
 
@@ -56,7 +56,7 @@ PID: 1592	Object 0xffffa103d2b11d50	Handle 0x328
 ...
 PID: 1592	Object 0xffffa103d366d080	Handle 0x9d0
 </pre>
-Aswell as results from a number of other processes. Looking into win32kfull.sys in IDA and viewing references to gSharedInfo shows it is still heavily in use, with most uses looking similar to the below from 'LockDesktopMenu':
+Aswell as results for a number of other processes. Looking into win32kfull.sys in IDA and viewing references to gSharedInfo shows it is still heavily in use, with most uses looking similar to the below from 'LockDesktopMenu':
 
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/LockDesktopMenu.png)
 
