@@ -12,6 +12,11 @@ This repository aims to provide functioning code that demonstrated usage of vari
 |[GdiSharedHandleTable](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/GdiSharedHandleTable/GdiSharedHandleTable/GdiSharedHandleTable.cpp)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/cross.png)|![](icons/cross.png)|![](icons/cross.png)|
 |[DesktopHeap](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/DesktopHeap/DesktopHeap/DesktopHeap.cpp)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/cross.png)|![](icons/cross.png)|
 
+The following techniques requiring non-standard permissions.
+| Technique											| Permission Needed | 7 | 8 | 8.1 | 10 - 1511 | 10 - 1607 | 10 - 1703 | 10 - 1703 + VBS | 
+|---------------------------------------------------|-------------------|-----------|-----------|--------------|----------------|----------------|----------------|----------------|
+| NtSystemDebugControl: <br>&nbsp;&nbsp;&nbsp;&nbsp; [SysDbgGetTriageDump]() | [SeDebugPrivilege](https://blogs.msdn.microsoft.com/oldnewthing/20080314-00/?p=23113) |![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/question.png)|
+
 ## Further Details
 Some more details on techniques which no longer work and what was changed:
 ### NtQuerySystemInformation/System Call Return Values:
