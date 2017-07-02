@@ -16,7 +16,7 @@ The following techniques requiring non-standard permissions.
 
 | Technique											| Permission Needed | 7 | 8 | 8.1 | 10 - 1511 | 10 - 1607 | 10 - 1703 | 10 - 1703 + VBS | 
 |---------------------------------------------------|-------------------|-----------|-----------|--------------|----------------|----------------|----------------|----------------|
-| NtSystemDebugControl: <br>&nbsp;&nbsp;&nbsp;&nbsp; [SysDbgGetTriageDump](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtSystemDebugControl_SysDbgGetTriageDump/NtSystemDebugControl_SysDbgGetTriageDump/NtSystemDebugControl_SysDbgGetTriageDump.cpp) | [SeDebugPrivilege](https://blogs.msdn.microsoft.com/oldnewthing/20080314-00/?p=23113) |![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/question.png)|
+| NtSystemDebugControl: <br>&nbsp;&nbsp;&nbsp;&nbsp;[SysDbgGetTriageDump](https://github.com/sam-b/windows_kernel_address_leaks/blob/master/NtSystemDebugControl_SysDbgGetTriageDump/NtSystemDebugControl_SysDbgGetTriageDump/NtSystemDebugControl_SysDbgGetTriageDump.cpp) | [SeDebugPrivilege](https://blogs.msdn.microsoft.com/oldnewthing/20080314-00/?p=23113) |![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/tick.png)|![](icons/question.png)|
 
 ## Further Details
 Some more details on techniques which no longer work and what was changed:
