@@ -13,11 +13,11 @@ In summary the instructions have the following purposes.
 
 |Instruction|Name|Purpose|
 |-----------|----|-------|
-| (SGDT)[http://x86.renejeschke.de/html/file_module_x86_id_290.html] | Store [Global Descriptor Table Register](http://wiki.osdev.org/Global_Descriptor_Table) | Stores the content of the global descriptor table register (GDTR) in the destination operand. |
-| (SIDT)[http://x86.renejeschke.de/html/file_module_x86_id_295.html] | Store [Interrupt Descriptor Table Register](http://wiki.osdev.org/Interrupt_Descriptor_Table) | Stores the content the interrupt descriptor table register (IDTR) in the destination operand. |
-| (SLDT)[http://x86.renejeschke.de/html/file_module_x86_id_296.html] | Store [Local Descriptor Table Register]() | Stores the segment selector from the local descriptor table register (LDTR) in the destination operand. |
-| (SMSW)(http://x86.renejeschke.de/html/file_module_x86_id_297.html) | Store Machine Status Word | Stores the machine status word (bits 0 through 15 of control register [CR0](http://wiki.osdev.org/CR0#CR0)) into the destination operand. |
-| (STR)[http://x86.renejeschke.de/html/file_module_x86_id_307.html] | Store [Task Register](http://wiki.osdev.org/Context_Switching#Hardware_Context_Switching) | Stores the segment selector from the task register (TR) in the destination operand. |
+| [SGDT](http://x86.renejeschke.de/html/file_module_x86_id_290.html) | Store [Global Descriptor Table Register](http://wiki.osdev.org/Global_Descriptor_Table) | Stores the content of the global descriptor table register (GDTR) in the destination operand. |
+| [SIDT](http://x86.renejeschke.de/html/file_module_x86_id_295.html) | Store [Interrupt Descriptor Table Register](http://wiki.osdev.org/Interrupt_Descriptor_Table) | Stores the content the interrupt descriptor table register (IDTR) in the destination operand. |
+| [SLDT](http://x86.renejeschke.de/html/file_module_x86_id_296.html) | Store [Local Descriptor Table Register]() | Stores the segment selector from the local descriptor table register (LDTR) in the destination operand. |
+| [SMSW](http://x86.renejeschke.de/html/file_module_x86_id_297.html) | Store Machine Status Word | Stores the machine status word (bits 0 through 15 of control register [CR0](http://wiki.osdev.org/CR0#CR0)) into the destination operand. |
+| [STR](http://x86.renejeschke.de/html/file_module_x86_id_307.html) | Store [Task Register](http://wiki.osdev.org/Context_Switching#Hardware_Context_Switching) | Stores the segment selector from the task register (TR) in the destination operand. |
 
 As you can see the information revealed all of these instructions may not be critical in all cases, but still probably shouldn't be exposed to user mode. Details on abusing the Global and Local Descriptor Tables for kernel exploitation can be found [here](http://vexillium.org/dl.php?call_gate_exploitation.pdf) and obviously overwriting entries in the Interrupt Descriptor Table can be great for hooking on key presses, network packets, etc. I used the below C code + asm file in visual studio to run the instructions in windows.
 
