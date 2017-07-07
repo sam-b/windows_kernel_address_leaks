@@ -6,7 +6,8 @@ NPIEP is a new security feature introduced by Microsoft as part of their Virtual
 
 Each of these instructions provides information about control data used by the CPU and the OS. The instructions to set this data can only be executed in kernel mode but due to historic design choices user mode software can use the read vesions. As shown below for SGDT.
 
-![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/sgdt_definition.PNG)
+![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/sgdt_definition.png)
+
 
 In summary the instructions have the following purposes.
 
