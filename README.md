@@ -28,7 +28,7 @@ Some more details on techniques which no longer work and what was changed:
 ### GdiSharedHandleTable / Desktop Heap
 Pending
 ### NPIEP 
-Pending
+[notes/NPIEP.md](notes/NPIEP.md) - A very brief "it's a thing" write up, more details pending on me getting a test laptop back when the summer interns are gone...
 ## Attributions
 I have referenced where I read about a technique and where specific structs etc have come from in the code, however these may not be the true original sources of the information :)   
 A lot of the function prototypes and struct definitions are taken from [ReactOS](https://www.reactos.org/).   
