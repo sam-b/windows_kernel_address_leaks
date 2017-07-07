@@ -127,6 +127,7 @@ This actually looks completely normal, but then I rebooted and the IDT and GDT a
 
 As a final note, it looks like Intel recently implemented an equivalent feature in hardware ([some would say after far too long](http://www.os2museum.com/wp/better-late-than-never/)): 
 ![](https://github.com/sam-b/windows_kernel_address_leaks/raw/master/notes/screenshots/umip_definition.PNG)
+
 (Taken from the intel instruction set reference.)
 
 More details pending, some intern stole my test laptop :p 
